@@ -1,0 +1,21 @@
+
+
+  <p *ngFor="let favoriteLocation of favoriteLocations">
+    <mat-toolbar class="toolBar">
+      
+      <span>{{favoriteLocation.LocalizedName}}</span>
+      <span class="example-spacer"></span>
+      
+      <button mat-icon-button class="example-icon delete-icon" (click)="removeFavoriteLocation(favoriteLocation.Key)" >
+        <mat-icon>delete</mat-icon>
+      </button>
+      
+     
+     
+
+      <button mat-icon-button class="example-icon description-icon" (click)="navigeWeatherOfLocation(favoriteLocation.Key)" >
+        <mat-icon>description</mat-icon>
+      </button>
+    </mat-toolbar>
+    <br/>
+  </p>

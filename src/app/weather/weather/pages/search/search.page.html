@@ -1,0 +1,55 @@
+
+
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>city</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="city"
+             matInput
+             [(ngModel)]=city  
+             (ngModelChange)="onInputChange()"
+             [ngModelOptions]="{standalone: true}"
+             [matAutocomplete]="auto"/>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" (click)="optionClicked(option)" >
+          {{option.LocalizedName}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+   
+ 
+    <mat-tab-group *ngIf="ifChoosen">
+        <mat-tab label="current weather" > 
+          <h1>{{locationChoosen.LocalizedName}}
+          <button mat-icon-button color="black" aria-label="Example icon button with a heart icon" (click)="addToFavorite()">
+            <mat-icon>favorite</mat-icon>
+          </button></h1>
+          <mat-card class="example-card card" >
+            <mat-card-title>{{currentWeather.LocalObservationDateTime | date:'EEEE'}}</mat-card-title>	 
+            <mat-card-subtitle>{{currentWeather.LocalObservationDateTime | date:'medium'}}</mat-card-subtitle> 
+            <mat-card-subtitle>{{currentWeather.Temperature.Metric.Value}} ° C</mat-card-subtitle>
+            <!-- <mat-card-content> <mat-icon>{{currentWeather.WeatherText}}</mat-icon></mat-card-content> -->
+            <mat-card-content>{{currentWeather.WeatherText}}</mat-card-content>     
+          </mat-card>
+
+          
+
+        </mat-tab>
+        <mat-tab label="forecast"> 
+            <mat-card class="example-card card" *ngFor="let day of dailyForecasts">
+              <mat-card-title>{{day.Date | date:'EEEE'}}</mat-card-title>
+              <!-- <mat-card-subtitle><mat-icon>{{day.Day.IconPhrase}}</mat-icon></mat-card-subtitle> -->
+              <mat-card-subtitle>{{day.Temperature.Minimum.Value}}° C - {{day.Temperature.Maximum.Value}}° C</mat-card-subtitle>
+              <mat-card-content>
+                <p>{{day.Date | date:'longDate'}}</p>
+                <p>{{day.Day.IconPhrase}}</p>
+                
+              </mat-card-content>
+              
+            </mat-card>
+        </mat-tab>
+      </mat-tab-group>
+  </form>
+  
+  

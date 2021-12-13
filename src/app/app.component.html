@@ -4,21 +4,18 @@
   <div id="sidenav-container">
     <h1>WeatherMe</h1>
 
-    <div class="link-wrapper">
-      <mat-icon svgIcon="SEARCH"></mat-icon>
+    <div class="link-wrapper"><mat-icon>search</mat-icon>
+      
       <p routerLink="/search">Search</p>
     </div>
 
-    <div class="link-wrapper" mat-button>
-      <mat-icon svgIcon="EMPTY_FAVORITE"></mat-icon>
+    <div class="link-wrapper" mat-button><mat-icon>favorite</mat-icon>
+      
       <p routerLink="/favorites">Favorites</p>
     </div>
 
-    <mat-slide-toggle id="slide-toggle" (click)="changeTemperatureUnit()">
-      <label>
-        Temperature in Fahrenheit
-      </label>
-    </mat-slide-toggle>
+    
+    
   </div>
 
   <div id="content-wrapper">
@@ -26,4 +23,6 @@
   </div>
 </div>
 
-<ng-snotify></ng-snotify>
+
+
+
