@@ -1,0 +1,36 @@
+<form #searchForm="ngForm">
+    <div class="search-container">
+        <label for="cityInput">Search for a city:</label>
+        <input id="cityInput"
+               type="text"
+               [(ngModel)]="searchQuery"
+               name="searchQuery"
+               #searchQueryInput="ngModel"
+               required
+               pattern="[a-zA-Z,\s']+"
+               [matAutocomplete]="auto"
+               (input)="searchQueryInput.valid && searchLocations()"
+               class="mat-input">
+        <div *ngIf="searchQueryInput.invalid && (searchQueryInput.dirty || searchQueryInput.touched)" class="error-container">
+            <div *ngIf="searchQueryInput.errors && searchQueryInput.errors.required" class="error-message">
+                City name is required.
+            </div>
+            <div *ngIf="searchQueryInput.errors && searchQueryInput.errors.pattern" class="error-message">
+                Please enter English letters only.
+            </div>
+        </div>
+    </div>
+</form>
+
+<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onOptionSelected($event)">
+    <mat-option *ngFor="let location of autocompleteResults" [value]="location">
+        {{ location.LocalizedName }}, {{ location.Country.LocalizedName }}
+    </mat-option>
+</mat-autocomplete>
+
+<mat-slide-toggle  [checked]="isInFavorites" (change)="onSlideToggleChange()">
+    {{ !isInFavorites ? 'Add to Favorites' : 'Remove from Favorites' }}
+</mat-slide-toggle>
+
+<app-weather-current></app-weather-current>
+<app-weather-details></app-weather-details>

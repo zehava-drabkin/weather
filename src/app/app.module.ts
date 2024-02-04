@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { WeatherModule } from './weather/weather/weather.module';
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -19,6 +18,7 @@ import { WeatherModule } from './weather/weather/weather.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    
   ],
   bootstrap: [AppComponent]
 })
