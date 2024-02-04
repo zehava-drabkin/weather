@@ -1,0 +1,16 @@
+<div *ngFor="let forecast of fiveDayForecast" class="weather-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ forecast.Date | date:'MM/dd'}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>Temperature: {{ forecast.Temperature.Minimum.Value}}°/{{forecast.Temperature.Maximum.Value }}°</mat-card-title>
+      <p>{{ forecast.Day.IconPhrase }}</p>
+      <p>Day Has Precipitation: {{ forecast.Day.HasPrecipitation ? 'yes' : 'no' }}</p>
+      <p>Day Precipitation Intensity: {{ forecast.Day.PrecipitationIntensity }}</p>
+      <p>Night description: {{ forecast.Night.IconPhrase }}</p>
+      <p>Night Has Precipitation: {{ forecast.Night.HasPrecipitation ? 'yes' : 'no' }}</p>
+    </mat-card-content>
+  </mat-card>
+  <br>
+</div>

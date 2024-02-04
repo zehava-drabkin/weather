@@ -1,0 +1,21 @@
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.mat-input {
+    max-width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+}
+
+.error-container {
+    margin-top: 4px;
+}
+
+.error-message {
+    color: #d9534f; /* Set your desired color */
+    font-size: 12px;
+}

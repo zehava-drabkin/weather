@@ -1,0 +1,28 @@
+<br>
+<div class="weather-card">
+    <mat-card>
+        <mat-card-header>
+            <p>CurrentWeather</p>
+            <mat-card-title>
+                {{getWeather[0].LocalObservationDateTime | date:'MM/dd' }}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card-title style="font-weight: bold">
+                Temperature:
+                {{ TypeCurrentWeather
+                ? getWeather[0].Temperature?.Metric?.Value
+                : getWeather[0].Temperature?.Imperial?.Value }}
+                {{ TypeCurrentWeather
+                ? getWeather[0].Temperature?.Metric?.Unit
+                : getWeather[0].Temperature?.Imperial?.Unit }}
+            </mat-card-title>
+            <p>{{ getWeather[0].WeatherText }}</p>
+            <p>Has Precipitation: {{ getWeather[0].HasPrecipitation ? 'yes' : 'no' }}</p>
+            <p *ngIf="getWeather.PrecipitationIntensity">
+                Precipitation Intensity: {{ getWeather[0].PrecipitationIntensity }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<br>
