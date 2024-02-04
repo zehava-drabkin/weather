@@ -14,7 +14,6 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'search', pathMatch: 'full' },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
