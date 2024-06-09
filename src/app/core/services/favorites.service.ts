@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Location } from 'src/app/shared/models/location.model';
 
 @Injectable({
@@ -11,8 +12,13 @@ export class FavoritesService {
     this.favorites.push(location);
   }
 
+  findFavorites(locationKey: string): number {
+    const cityIndex = this.favorites.findIndex((favorite) => favorite.Key === locationKey);
+    return cityIndex
+  }
+
   removeFromFavorites(locationKey: string): void {
-    const cityToRemoveIndex = this.favorites.findIndex((favorite) => favorite.Key === locationKey);
+    const cityToRemoveIndex = this.findFavorites(locationKey);
     this.favorites.splice(cityToRemoveIndex, 1);
   }
 

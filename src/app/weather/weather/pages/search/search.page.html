@@ -1,0 +1,17 @@
+<form>
+  <div class="wrap-input">
+    <mat-label class="search-label">Search city <span class="comment-en-letter">*only english letter</span></mat-label>
+    <input matInput (input)="onInput($event)" [matAutocomplete]="auto" [formControl]="searchCity">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayCityName"
+      (optionSelected)="OnSelectedCity()">
+      <mat-option *ngFor="let location of filteredLocations" [value]="location">
+        {{location.LocalizedName}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</form>
+<div class="result">
+  <app-weather-by-city [cityKey]="selectedCity.Key"></app-weather-by-city>
+  <app-favorites [selectedCity]="selectedCity"
+    (onDisplaySpecificFavorite)="displaySpecificWeather($event)"></app-favorites>
+</div>

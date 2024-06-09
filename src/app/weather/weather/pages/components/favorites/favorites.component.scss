@@ -1,0 +1,35 @@
+.favorites-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: unset;
+
+  .warp-favorite-chips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cursor-pointer {
+      cursor: pointer;
+    }
+  }
+
+  .mat-chip-list-wrapper {
+    margin-top: 30px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 672px) {
+    h2 {
+      font-size: 13px;
+      margin-bottom: unset !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 785px) {
+  .favorites-container {
+    gap: 20px;
+  }
+}

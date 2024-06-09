@@ -1,0 +1,56 @@
+mat-card {
+  margin-left: 70px !important;
+  margin-right: 70px !important;
+  ::ng-deep.mat-card-header-text {
+    width: 100%;
+    text-align: center !important;
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 50%;
+    padding: 10px;
+    color: black;
+    margin-right: 10px;
+
+    .temperature-value {
+      font-size: 30px;
+    }
+  }
+  .temperature-description {
+    color: black;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.forecast-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+  .weather-of-day {
+    display: flex;
+    .day-container {
+      align-items: center;
+      .temperature-container {
+        display: flex;
+        gap: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1291px) {
+  .forecast-container {
+    gap: 80px;
+  }
+}

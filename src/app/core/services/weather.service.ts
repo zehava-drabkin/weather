@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CurrentWeather } from 'src/app/shared/models/currentWeather.model';
 import { Forecast } from 'src/app/shared/models/forecast.model';
 import { environment } from 'src/environments/environment';
@@ -11,9 +11,9 @@ import { environment } from 'src/environments/environment';
 export class WeatherService {
   isMetric = true;
 
-  temperatureUnitChanged = new Subject<null>();
+  temperatureUnitChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getForecast(locationKey: string): Observable<Forecast> {
     const isMetric = this.isMetric ? 'true' : 'false';
@@ -31,6 +31,4 @@ export class WeatherService {
 
     return this.httpClient.get<CurrentWeather>(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}`, { params });
   }
-
-
 }

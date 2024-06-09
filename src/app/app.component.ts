@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { LoaderService } from './core/services/loader.service';
 import { WeatherService } from './core/services/weather.service';
-
+import { ToggleColorService } from './core/services/toggle-color.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import { WeatherService } from './core/services/weather.service';
 })
 export class AppComponent implements OnInit {
   displayLoading = false;
-    
-  constructor(private loaderService: LoaderService, private weatherService: WeatherService) {}
+
+  constructor(private loaderService: LoaderService, private weatherService: WeatherService, private toggleColorService: ToggleColorService) { }
 
   ngOnInit() {
     this.loaderService.stateChange.subscribe((loaderState) => {
@@ -23,7 +24,11 @@ export class AppComponent implements OnInit {
 
   changeTemperatureUnit() {
     this.weatherService.isMetric = !this.weatherService.isMetric;
-
-    this.weatherService.temperatureUnitChanged.next(null);
+    this.weatherService.temperatureUnitChanged.next(this.weatherService.isMetric);
   }
+
+  toggleDarkTheme() {
+    this.toggleColorService.toggleToDark();
+  }
+
 }

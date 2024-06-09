@@ -7,9 +7,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { IconPipe } from './pipes/icon.pipe';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { ToggleColorDirective } from './toggle-color.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    IconPipe,
+    ErrorDialogComponent,
+    ToggleColorDirective
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -20,16 +29,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatSlideToggleModule,
+    MatDialogModule,
   ],
   exports: [
-    MatIconModule, 
-    MatButtonModule, 
-    MatAutocompleteModule, 
+    MatIconModule,
+    MatButtonModule,
+    MatAutocompleteModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
     MatSlideToggleModule,
+    IconPipe,
+    ToggleColorDirective,
   ],
 })
 export class SharedModule { }

@@ -1,0 +1,25 @@
+<div class="favorites-container">
+  <h2 *ngIf="isCityFavorite; else notInFavoritesTemplate">This location is on the favorites list</h2>
+  <button mat-button class="light" appToggleColor (click)="manageFavorites()">{{action}}</button>
+
+  <ng-template #notInFavoritesTemplate>
+    <h2>This location is not on the favorites list</h2>
+  </ng-template>
+
+
+  <div *ngIf="favorites.length > 0; else notFavoritesTemplate" class="warp-favorite-chips">
+    <h2>all your favorites</h2>
+    <mat-chip-list>
+      <mat-chip *ngFor="let favoriteCity of favorites">
+        <span class="cursor-pointer" (click)="displayWeather(favoriteCity)">{{favoriteCity.LocalizedName}}</span>
+        <button matChipRemove (click)="removeFromFavorite(favoriteCity.Key)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <ng-template #notFavoritesTemplate>
+    <h2>There are no locations reserved in favorites</h2>
+  </ng-template>
+</div>

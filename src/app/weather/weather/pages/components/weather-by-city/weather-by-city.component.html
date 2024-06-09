@@ -1,0 +1,38 @@
+<div>
+  <mat-card class="mat-elevation-z5 light" appToggleColor>
+    <mat-card-header>
+      <mat-card-title> current Weather </mat-card-title>
+      <mat-card-subtitle>{{dateOfToday | date: 'EEEE, MMMM d, y'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-content">
+        <div class="container dark" appToggleColor>
+          <span class="temperature-value">{{this.currentWetherValue}}<sup>°{{formatWeather}}</sup></span>
+        </div>
+        <div class="temperature-description container">
+          <img [src]="+currentWeather?.WeatherIcon | icon" />
+          <span>Feels like </span>
+          <span>{{currentWeather?.WeatherText}}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z5 forecast-container light" appToggleColor>
+    <div *ngFor="let weather of foreCast?.DailyForecasts let last=last" class="weather-of-day">
+      <div class="day-container">
+        <mat-card-header>
+          <mat-card-subtitle>{{weather.Date | date: 'EEEE'}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="temperature-container">
+          <div>
+            <span>{{weather?.Temperature?.Maximum.Value}}<sup>°{{formatWeather}}</sup></span>
+          </div>
+          <div>
+            <span>{{weather?.Temperature?.Minimum.Value}}<sup>°{{formatWeather}}</sup></span>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+</div>
